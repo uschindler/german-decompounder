@@ -35,7 +35,7 @@ fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
 
 I used his large and high quality dictionary to make a dictionary file only containing
 the parts of German compounds. The dictionary therefore is not large, it contains
-about 16,000 words, that are commonly used to form compounds. The dictionary does
+about 14,500 tokens, that are commonly used to form compounds. The dictionary does
 *not* contain the compounds, only the parts that are used to create them.
 The dictionary was lowercased and the umlauts normalized.
 
