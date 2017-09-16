@@ -30,8 +30,8 @@ For decompounding German words, the recommended approach is the following:
   lucene field only using the minimal stemmer but not doing decompounding for
   preferring exact matches in your search.
 
-The dictionary is developed here (dictionary-de.txt) and was created based on the
-fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
+The dictionary file [dictionary-de.txt](dictionary-de.txt) is developed here and was
+created based on the fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
 
 I used his large and high quality dictionary to make a dictionary file only containing
 the parts of German compounds. The dictionary therefore is not large, it contains
