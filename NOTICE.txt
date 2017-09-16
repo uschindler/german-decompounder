@@ -19,7 +19,7 @@ ftp://ctan.tug.org/tex-archive/fonts/mathpazo/lppl.txt
 Please report errors in this file to the following address:
 fop-dev@xml.apache.org [or yours] and not to the address of the
 original authors. You are not allowed to distribute this file under its
-original name in the TeX distribution."
+original name in the TeX distribution.
 
 =============================================================================
 
