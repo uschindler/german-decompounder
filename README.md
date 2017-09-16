@@ -18,10 +18,17 @@ For decompounding German words, the recommended approach is the following:
 * The second step is therefore to take the syllables and form words out of them again.
   The Lucene `HyphenationCompoundWordTokenFilter` can do this based on a dictionary.
   This project here mainly provides the dictionary to do this (see below). As the
-  dictionary solely provided parts of compound words (not the compounds itsself),
+  dictionary solely provides parts of compound words (not the compounds itsself),
   it is important to use the `onlyLongestMatch` setting of the token filter,
   otherwise you might get wrong decompounding results (especially as the dictionary
   also contains very short words).
+* The third step is stemming the full word (the token filter keep the original by
+  default) and also its parts. You should use the _light_ German stemmer (not the
+  minimal), because the decompounded parts have lots of filler characters that should
+  be removed by the stemmer. The minimal stemmer is not able to do this.
+  As decompounding is no longer a minimal approach, you may consider to use a separate
+  lucene field only using the minimal stemmer but not doing decompounding for
+  preferring exact matches in your search.
 
 The dictionary is developed here (dictionary-de.txt) and was created based on the
 fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
