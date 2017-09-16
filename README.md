@@ -1,4 +1,4 @@
-# Data files for German Decompounder for Apache Lucene / Apache Solr / Elasticsearch #
+# Data files of German Decompounder for Apache Lucene / Apache Solr / Elasticsearch #
 
 This project was started to offer German decompounding out of box for users
 of Apache Lucene, Apache Solr, or Elasticsearch. The problem with the data files is
