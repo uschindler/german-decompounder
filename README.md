@@ -37,7 +37,7 @@ I used his large and high quality dictionary to make a dictionary file only cont
 the parts of German compounds. The dictionary therefore is not large, it contains
 about 14,500 tokens, that are commonly used to form compounds. The dictionary does
 *not* contain the compounds, only the parts that are used to create them.
-The dictionary was lowercased and the umlauts normalized.
+The dictionary was lowercased and the umlauts restored to their UTF-8 representation.
 
 *Keep in mind:* The files provided here are for *new* German orthography (since 1998)!
 
