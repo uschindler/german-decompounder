@@ -2,8 +2,8 @@
 
 This project was started to offer German decompounding out of box for users
 of Apache Lucene, Apache Solr, or Elasticsearch. The problem with the data files is
-their license, so be careful when packaging them. Apache Lucene is a Apache v2.0
-licensed, so the data files cannot be shipped together with the distribution.
+their license, so be careful when packaging them. Apache Lucene is an Apache v2.0
+licensed project, so the data files cannot be shipped together with the distribution.
 
 For decompounding German words, the recommended approach is the following:
 
@@ -13,20 +13,26 @@ For decompounding German words, the recommended approach is the following:
   Latex). They are provided here in the format of an XML file for Apache FOPs (Formatting
   Objects Processor, taken from https://sourceforge.net/projects/offo/). Those files
   can be read by Lucene's `HyphenationCompoundWordTokenFilter` to do the hyphenation.
-* The second step is therefor to take the syllables and form words out of it again.
+  Be sure to use the files of offo-hyphenation v1.2, not newer (2.x) ones (Lucene can't
+  read them)!
+* The second step is therefore to take the syllables and form words out of them again.
   The Lucene `HyphenationCompoundWordTokenFilter` can do this based on a dictionary.
-  This project here mainly provides the dictionary to do this (see below).
+  This project here mainly provides the dictionary to do this (see below). As the
+  dictionary solely provided parts of compound words (not the compounds itsself),
+  it is important to use the `onlyLongestMatch` setting of the token filter,
+  otherwise you might get wrong decompounding results (especially as the dictionary
+  also contains very short words).
 
-The dictionary is developed here (dictionary-de.txt) was created based on the data
-by Björn Jacke: https://www.j3e.de/ispell/igerman98/
+The dictionary is developed here (dictionary-de.txt) and was created based on the
+fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
 
 I used his large and high quality dictionary to make a dictionary file only containing
 the parts of German compounds. The dictionary therefore is not large, it contains
-about 17,000 words, that are commponly used to form compounds. The dictionary does
+about 16,000 words, that are commonly used to form compounds. The dictionary does
 *not* contain the compounds, only the parts that are used to create them.
 The dictionary was lowercased and the umlauts normalized.
 
-Keep in mind: The files provided here are for *new* German orthography (since 1998)!
+*Keep in mind:* The files provided here are for *new* German orthography (since 1998)!
 
 ## Apache Solr example ##
 
@@ -89,7 +95,7 @@ the following settings to your index. After that you can use the
 }
 ```
 
-Important: Use the analyzer for both indexing and searching!
+*Important:* Use the analyzer for both indexing and searching!
 
 ## Help Out! ##
 
