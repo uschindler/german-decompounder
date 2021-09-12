@@ -118,6 +118,7 @@ Analyzer analyzer = CustomAnalyzer.builder(Paths.get("/path/to/german-decompound
                        "onlyLongestMatch", "true",
                        "minSubwordSize", "4")
        .addTokenFilter(GermanNormalizationFilterFactory.NAME)
+       .addTokenFilter(GermanLightStemFilterFactory.NAME)
        .build();
 ```
 
