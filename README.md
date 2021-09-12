@@ -104,6 +104,25 @@ the following settings to your index. After that you can use the
 
 *Important:* Use the analyzer for both indexing and searching!
 
+## Lucene API example ##
+
+Custom Analyzer for use with the Apache Lucene API.
+
+```java
+Analyzer analyzer = CustomAnalyzer.builder(Paths.get("/path/to/german-decompounder"))
+       .withTokenizer(StandardTokenizerFactory.NAME)
+       .addTokenFilter(LowerCaseFilterFactory.NAME)
+       .addTokenFilter(HyphenationCompoundWordTokenFilterFactory.NAME,
+                       "hyphenator", "de_DR.xml",
+                       "dictionary", "dictionary-de.txt",
+                       "onlyLongestMatch", "true",
+                       "minSubwordSize", "4")
+       .addTokenFilter(GermanNormalizationFilterFactory.NAME)
+       .build();
+```
+
+*Important:* Use the analyzer for both indexing and searching!
+
 ## Help Out! ##
 
 If you have suggestions for improving the German dictionary, please send
