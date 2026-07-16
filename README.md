@@ -31,7 +31,7 @@ For decompounding German words, the recommended approach is the following:
   preferring exact matches in your search.
 
 The dictionary file [dictionary-de.txt](dictionary-de.txt) is developed here and was
-created based on the fabulous data by Björn Jacke: https://www.j3e.de/ispell/igerman98/
+created based on the fabulous data by BjÃ¶rn Jacke: https://www.j3e.de/ispell/igerman98/
 
 I used his large and high quality dictionary to make a dictionary file only containing
 the parts of German compounds. The dictionary therefore is not large, it contains
@@ -123,6 +123,44 @@ Analyzer analyzer = CustomAnalyzer.builder(Paths.get("/path/to/german-decompound
 ```
 
 *Important:* Use the analyzer for both indexing and searching!
+
+## Vespa example ##
+
+You'd use [Lucene Linguistics](https://docs.vespa.ai/en/linguistics/lucene-linguistics.html) and copy
+the dictionary files to `configDir`. Make sure the Linguistics bundle incorporates
+`javax.xml.parsers`, `org.xml.sax`, and `org.xml.sax.helpers`. Full
+[sample app here](https://github.com/vespa-engine/sample-apps/tree/master/examples/lucene-linguistics/hyphenation-compound-word).
+Analyzer definition can be:
+
+```xml
+<item key="profile=de_compound;language=de">
+  <tokenizer>
+    <name>standard</name>
+  </tokenizer>
+  <tokenFilters>
+    <item>
+      <name>lowercase</name>
+    </item>
+    <item>
+      <name>hyphenationCompoundWord</name>
+      <conf>
+        <item key="hyphenator">de_DR.xml</item>
+        <item key="dictionary">dictionary-de.txt</item>
+        <item key="onlyLongestMatch">true</item>
+        <item key="minSubwordSize">4</item>
+      </conf>
+    </item>
+    <item>
+      <name>germanNormalization</name>
+    </item>
+    <item>
+      <name>germanLightStem</name>
+    </item>
+  </tokenFilters>
+</item>
+```
+
+*Important:* Use the [same profile for both indexing and searching](https://docs.vespa.ai/en/linguistics/linguistics.html#symmetrical-processing)!
 
 ## Help Out! ##
 
